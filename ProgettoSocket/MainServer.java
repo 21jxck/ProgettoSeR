@@ -24,7 +24,7 @@ public class MainServer {
                 // bloccante finchè non avviene una connessione
                 Socket clientSocket = serverSocket.accept();
 
-                ServerThread thread = new ServerThread(clientSocket);
+                ServerThreads thread = new ServerThreads(clientSocket);
                 thread.start();
             }
         } catch (IOException ioe) {
