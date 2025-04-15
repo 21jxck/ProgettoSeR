@@ -1,4 +1,4 @@
-import java.util.HashMap;
+import java.util.*;
 
 public class Data {
     public String comune;
@@ -8,7 +8,6 @@ public class Data {
     public String numeroStelle;
     public String denominazione;
     public String indirizzo;
-    public String numeroCivico;
     public String cap;
     public String numTelefono;
     public String fax;
@@ -48,10 +47,6 @@ public class Data {
 
     public void setIndirizzo(String indirizzo) {
         this.indirizzo = indirizzo;
-    }
-
-    public void setNumeroCivico(String numeroCivico) {
-        this.numeroCivico = numeroCivico;
     }
 
     public void setCap(String cap) {
@@ -125,10 +120,6 @@ public class Data {
         return indirizzo;
     }
 
-    public String getNumeroCivico() {
-        return numeroCivico;
-    }
-
     public String getCap() {
         return cap;
     }
@@ -147,6 +138,42 @@ public class Data {
 
     public String getZona() {
         return zona;
+    }
+
+    public Map<String, Boolean> getFeature() {
+        Map<String, Boolean> presentFeature = new HashMap<>();
+
+        for(Map.Entry<String, Boolean> feature : features.entrySet()) {
+            if(feature.getValue()) {
+                presentFeature.put(feature.getKey(), feature.getValue());
+            }
+        }
+
+        return presentFeature;
+    }
+
+    public Map<String, Boolean> getAmbiente() {
+        Map<String, Boolean> presentAmbiente = new HashMap<>();
+
+        for(Map.Entry<String, Boolean> ambiente : ambienti.entrySet()) {
+            if(ambiente.getValue()) {
+                presentAmbiente.put(ambiente.getKey(), ambiente.getValue());
+            }
+        }
+
+        return presentAmbiente;
+    }
+
+    public Map<String, Boolean> getLingua() {
+        Map<String, Boolean> presentLingua = new HashMap<>();
+
+        for(Map.Entry<String, Boolean> lingua : lingue.entrySet()) {
+            if(lingua.getValue()) {
+                presentLingua.put(lingua.getKey(), lingua.getValue());
+            }
+        }
+
+        return presentLingua;
     }
 
     public String getCodice() {
