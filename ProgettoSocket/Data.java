@@ -19,6 +19,9 @@ public class Data {
     public String codice;
 
     public Data() {
+        features = new HashMap<>();
+        ambienti = new HashMap<>();
+        lingue = new HashMap<>();
     }
 
     public void setComune(String comune) {
@@ -178,5 +181,55 @@ public class Data {
 
     public String getCodice() {
         return codice;
+    }
+
+    @Override
+    public String toString() {
+        String s = "";
+        s += tipologia + " " + denominazione;
+
+        if(!numeroStelle.isEmpty()) {
+            s += " Stelle: " + numeroStelle + "\n\r";
+        }
+
+        s += "\n\rComune: " + comune + ", Provincia: " + provincia + ", Indirizzo: " + indirizzo + ", CAP: " + cap + "\n\r" +
+                "Numero di telefono: " + numTelefono + ", Fax: " + fax + ", Posta elettronica: " + postaElettronica + "\n\r" +
+                "Features: ";
+
+        String featuresPresenti = "";
+        for (int i = 0; i < (CSVReader.costantFeatureKey.size() / 2); i++) {
+            if (features.containsKey(CSVReader.costantFeatureKey.get(i)) && Boolean.TRUE.equals(features.get(CSVReader.costantFeatureKey.get(i)))) {
+                featuresPresenti += CSVReader.costantFeatureKey.get(i) + " ";
+            }
+        }
+
+        String ambientiPresenti = "";
+        for (int i = 0; i < (CSVReader.costantAmbientKey.size() / 2); i++) {
+            if (ambienti.containsKey(CSVReader.costantAmbientKey.get(i)) && Boolean.TRUE.equals(ambienti.get(CSVReader.costantAmbientKey.get(i)))) {
+                ambientiPresenti += CSVReader.costantAmbientKey.get(i) + " ";
+            }
+        }
+
+        String linguePresenti = "";
+        for (int i = 0; i < (CSVReader.costantLanguageKey.size() / 2); i++) {
+            if (lingue.containsKey(CSVReader.costantLanguageKey.get(i)) && Boolean.TRUE.equals(lingue.get(CSVReader.costantLanguageKey.get(i)))) {
+                linguePresenti += CSVReader.costantLanguageKey.get(i) + " ";
+            }
+        }
+
+        if(featuresPresenti.isEmpty()) {
+            featuresPresenti = "nessuna.";
+        }
+
+        if(ambientiPresenti.isEmpty()) {
+            ambientiPresenti = "nessuna.";
+        }
+
+        if(linguePresenti.isEmpty()) {
+            linguePresenti = "nessuna.";
+        }
+        s += featuresPresenti + "\n\rAmbiente circostante: " + ambientiPresenti + "\n\rLingue straniere parlate: " + linguePresenti + "\n\r";
+
+        return s;
     }
 }

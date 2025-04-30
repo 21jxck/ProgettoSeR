@@ -3,9 +3,9 @@ import java.util.*;
 
 public class CSVReader {
     List<Data> fileContent = new ArrayList<>();
-    List<String> costantFeatureKey = new ArrayList<>();
-    List<String> costantAmbientKey = new ArrayList<>();
-    List<String> costantLanguageKey = new ArrayList<>();
+    static List<String> costantFeatureKey = new ArrayList<>();
+    static List<String> costantAmbientKey = new ArrayList<>();
+    static List<String> costantLanguageKey = new ArrayList<>();
 
     public CSVReader() {
         readCSV();
@@ -34,6 +34,8 @@ public class CSVReader {
                     continue;
                 }
 
+                if (dataTopics.length < 44) continue;
+
                 Data data = new Data();
                 data.setComune(dataTopics[0]);
                 data.setProvincia(dataTopics[1]);
@@ -48,16 +50,23 @@ public class CSVReader {
                 data.setPostaElettronica(dataTopics[14]);
                 data.setZona(dataTopics[16]);
 
+                int j = 0;
+
                 for (int i = 17; i <= 28; i++) {
-                    data.setFeature(costantFeatureKey.get(i), dataTopics[i]);
+                    data.setFeature(costantFeatureKey.get(j), dataTopics[i]);
+                    j++;
                 }
 
+                j = 0;
                 for (int i = 29; i <= 39; i++) {
-                    data.setAmbiente(costantAmbientKey.get(i), dataTopics[i]);
+                    data.setAmbiente(costantAmbientKey.get(j), dataTopics[i]);
+                    j++;
                 }
 
+                j = 0;
                 for (int i = 40; i <= 43; i++) {
-                    data.setLingua(costantLanguageKey.get(i), dataTopics[i]);
+                    data.setLingua(costantLanguageKey.get(j), dataTopics[i]);
+                    j++;
                 }
 
                 data.setCodice(dataTopics[46]);
@@ -86,7 +95,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getComune().equalsIgnoreCase(provincia)) {
+            if (data.getProvincia().equalsIgnoreCase(provincia)) {
                 researchedData.add(data);
             }
         }
@@ -98,7 +107,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getComune().equalsIgnoreCase(tipologia)) {
+            if (data.getTipologia().equalsIgnoreCase(tipologia)) {
                 researchedData.add(data);
             }
         }
@@ -110,7 +119,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getComune().equalsIgnoreCase(categoria)) {
+            if (data.getCategoria().equalsIgnoreCase(categoria)) {
                 researchedData.add(data);
             }
         }
@@ -118,11 +127,11 @@ public class CSVReader {
         return researchedData;
     }
 
-    public List<Data> ricercaNStelle(String nStelle) {
+    public List<Data> researchNStelle(String nStelle) {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getComune().equalsIgnoreCase(nStelle)) {
+            if (data.getNumeroStelle().equalsIgnoreCase(nStelle)) {
                 researchedData.add(data);
             }
         }
@@ -134,7 +143,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getComune().equalsIgnoreCase(denominazione)) {
+            if (data.getDenominazione().equalsIgnoreCase(denominazione)) {
                 researchedData.add(data);
             }
         }
@@ -146,7 +155,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getComune().equalsIgnoreCase(indirizzo)) {
+            if (data.getIndirizzo().equalsIgnoreCase(indirizzo)) {
                 researchedData.add(data);
             }
         }
@@ -158,7 +167,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getComune().equalsIgnoreCase(cap)) {
+            if (data.getCap().equalsIgnoreCase(cap)) {
                 researchedData.add(data);
             }
         }
@@ -170,7 +179,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getComune().equalsIgnoreCase(nTelefono)) {
+            if (data.getNumTelefono().equalsIgnoreCase(nTelefono)) {
                 researchedData.add(data);
             }
         }
@@ -182,7 +191,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getComune().equalsIgnoreCase(fax)) {
+            if (data.getFax().equalsIgnoreCase(fax)) {
                 researchedData.add(data);
             }
         }
@@ -194,7 +203,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getComune().equalsIgnoreCase(postaElettronica)) {
+            if (data.getPostaElettronica().equalsIgnoreCase(postaElettronica)) {
                 researchedData.add(data);
             }
         }
@@ -206,7 +215,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getComune().equalsIgnoreCase(zona)) {
+            if (data.getZona().equalsIgnoreCase(zona)) {
                 researchedData.add(data);
             }
         }
@@ -254,7 +263,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getComune().equalsIgnoreCase(codice)) {
+            if (data.getCodice().equalsIgnoreCase(codice)) {
                 researchedData.add(data);
             }
         }

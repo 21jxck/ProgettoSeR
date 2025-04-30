@@ -2,6 +2,7 @@
 
 import java.io.*;
 import java.net.*;
+import java.util.List;
 
 /**
  *
@@ -35,35 +36,162 @@ public class ServerThreads extends Thread {
             out.println("Connessione stabilita ('END' per terminarla, '?' per aiuto): ");
             out.flush();
             while (true) {
+                CSVReader csvr = new CSVReader();
                 String str = in.readLine();
                 if (str.equals("END"))
                     break;
 
                 if(str.equals("?")) {
                     out.print("COMANDI INSERIBILI:" +
-                            "\nricerca_comune -> visualizza tutte le strutture in un determinato comune. " +
-                            "\nricerca_provincia -> visualizza tutte le strutture in una determinata provincia. " +
-                            "\nricerca_tipologia -> visualizza tutte le strutture in una determinata tipologia. " +
-                            "\nricerca_categoria -> visualizza tutte le strutture in una determinata categoria. " +
-                            "\nricerca_stelle -> visualizza tutte le strutture con un determinato numero di stelle. " +
-                            "\nricerca_denominazione -> visualizza la struttura con una determinata denominazione. " +
-                            "\nricerca_indirizzo -> visualizza la struttura presente in un determinato indirizzo. " +
-                            "\nricerca_CAP -> visualizza le strutture presenti in un determinato CAP. " +
-                            "\nricerca_numero_telefono -> visualizza la struttura con un determinato numero di telefono. " +
-                            "\nricerca_fax -> visualizza la struttura con un determinato fax. " +
-                            "\nricerca_posta_elettronica -> visualizza la struttura con una determinata posta elettronica. " +
-                            "\nricerca_zona -> visualizza le strutture presenti in una determinata zona. " +
-                            "\nricerca_feature -> visualizza le struttre con una determinata feature. " +
-                            "\nricerca_ambiente ->visualizza le strutture con un determinato ambiente circostante. " +
-                            "\nricerca_lingua -> visualizza le strutture in cui si parla una determinata lingua. " +
-                            "\nricerca_codice -> visualizza la struttura con un determinato codice identificativo. " +
-                            "\nGET_ROW -> visualizza la struttura nella determinata riga. \n");
+                            "\n\rricerca_comune -> visualizza tutte le strutture in un determinato comune. " +
+                            "\n\rricerca_provincia -> visualizza tutte le strutture in una determinata provincia. " +
+                            "\n\rricerca_tipologia -> visualizza tutte le strutture in una determinata tipologia. " +
+                            "\n\rricerca_categoria -> visualizza tutte le strutture in una determinata categoria. " +
+                            "\n\rricerca_stelle -> visualizza tutte le strutture con un determinato numero di stelle. " +
+                            "\n\rricerca_denominazione -> visualizza la struttura con una determinata denominazione. " +
+                            "\n\rricerca_indirizzo -> visualizza la struttura presente in un determinato indirizzo. " +
+                            "\n\rricerca_CAP -> visualizza le strutture presenti in un determinato CAP. " +
+                            "\n\rricerca_numeroTelefono -> visualizza la struttura con un determinato numero di telefono. " +
+                            "\n\rricerca_fax -> visualizza la struttura con un determinato fax. " +
+                            "\n\rricerca_postaElettronica -> visualizza la struttura con una determinata posta elettronica. " +
+                            "\n\rricerca_zona -> visualizza le strutture presenti in una determinata zona. " +
+                            "\n\rricerca_feature -> visualizza le struttre con una determinata feature. " +
+                            "\n\rricerca_ambiente ->visualizza le strutture con un determinato ambiente circostante. " +
+                            "\n\rricerca_lingua -> visualizza le strutture in cui si parla una determinata lingua. " +
+                            "\n\rricerca_codice -> visualizza la struttura con un determinato codice identificativo. " +
+                            "\n\rGET_ROW -> visualizza la struttura nella determinata riga. " +
+                            "\n\rALL -> visualizza tutte le strutture ricettive della Regione Veneto\n\r" +
+                            "\n\rInserire la parola chiave desiderata dopo uno spazio dopo il comando.\n");
+                    continue;
                 }
+
                 String[] words = str.split(" ", 2);
 
+                switch(words[0]) {
+                    case "ricerca_comune":
+                        List<Data> comune = csvr.researchComune(words[1]);
 
-                System.out.println("Echoing: " + str.toUpperCase());
-                out.println(str.toUpperCase());
+                        for(Data dato : comune) {
+                            out.print(dato.toString() + "\n\r");
+                            out.flush();
+                        }
+                        break;
+                    case "ricerca_tipologia":
+                        List<Data> tipologia = csvr.researchTipologia(words[1]);
+
+                        for(Data dato : tipologia) {
+                            out.print(dato.toString() + "\n\r");
+                            out.flush();
+                        }
+                        break;
+                    case "ricerca_categoria":
+                        List<Data> categoria = csvr.researchCategoria(words[1]);
+
+                        for(Data dato : categoria) {
+                            out.print(dato.toString() + "\n\r");
+                            out.flush();
+                        }
+                        break;
+                    case "ricerca_stelle":
+                        List<Data> stelle = csvr.researchNStelle(words[1]);
+
+                        for(Data dato : stelle) {
+                            out.print(dato.toString() + "\n\r");
+                            out.flush();
+                        }
+                        break;
+                    case "ricerca_denominazione":
+                        List<Data> denominazione = csvr.researchDenominazione(words[1]);
+
+                        for(Data dato : denominazione) {
+                            out.print(dato.toString() + "\n\r");
+                            out.flush();
+                        }
+                        break;
+                    case "ricerca_indirizzo":
+                        List<Data> indirizzo = csvr.researchIndirizzo(words[1]);
+
+                        for(Data dato : indirizzo) {
+                            out.print(dato.toString() + "\n\r");
+                            out.flush();
+                        }
+                        break;
+                    case "ricerca_CAP":
+                        List<Data> cap = csvr.researchCap(words[1]);
+
+                        for(Data dato : cap) {
+                            out.print(dato.toString() + "\n\r");
+                            out.flush();
+                        }
+                        break;
+                    case "ricerca_numeroTelefono":
+                        List<Data> numeroTelefono = csvr.researchCap(words[1]);
+
+                        for(Data dato : numeroTelefono) {
+                            out.print(dato.toString() + "\n\r");
+                            out.flush();
+                        }
+                        break;
+                    case "ricerca_fax":
+                        List<Data> fax = csvr.researchCap(words[1]);
+
+                        for(Data dato : fax) {
+                            out.print(dato.toString() + "\n\r");
+                            out.flush();
+                        }
+                        break;
+                    case "ricerca_postaElettronica":
+                        List<Data> postaElettronica = csvr.researchCap(words[1]);
+
+                        for(Data dato : postaElettronica) {
+                            out.print(dato.toString() + "\n\r");
+                            out.flush();
+                        }
+                        break;
+                    case "ricerca_zona":
+                        List<Data> zona = csvr.researchCap(words[1]);
+
+                        for(Data dato : zona) {
+                            out.print(dato.toString() + "\n\r");
+                            out.flush();
+                        }
+                        break;
+                    case "ricerca_feature":
+                        List<Data> feature = csvr.researchCap(words[1]);
+
+                        for(Data dato : feature) {
+                            out.print(dato.toString() + "\n\r");
+                            out.flush();
+                        }
+                        break;
+                    case "ricerca_ambiente":
+                        List<Data> ambiente = csvr.researchCap(words[1]);
+
+                        for(Data dato : ambiente) {
+                            out.print(dato.toString() + "\n\r");
+                            out.flush();
+                        }
+                        break;
+                    case "ricerca_lingua":
+                        List<Data> lingua = csvr.researchCap(words[1]);
+
+                        for(Data dato : lingua) {
+                            out.print(dato.toString() + "\n\r");
+                            out.flush();
+                        }
+                        break;
+                    case "ricerca_codice":
+                        List<Data> codice = csvr.researchCap(words[1]);
+
+                        for(Data dato : codice) {
+                            out.print(dato.toString() + "\n\r");
+                            out.flush();
+                        }
+                        break;
+                    default:
+                        out.print("Errore nel comando!\n\r");
+                        out.flush();
+                }
             }
 
             // chiusura di stream e socket
@@ -73,7 +201,6 @@ public class ServerThreads extends Thread {
             clientSocket.close();
         } catch (IOException e) {
             System.err.println("Accept failed");
-            // System.exit(1);
         }
     }
 }
