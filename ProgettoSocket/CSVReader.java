@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class CSVReader {
-    List<Data> fileContent = new ArrayList<>();
+    static List<Data> fileContent = new ArrayList<>();
     static List<String> costantFeatureKey = new ArrayList<>();
     static List<String> costantAmbientKey = new ArrayList<>();
     static List<String> costantLanguageKey = new ArrayList<>();
@@ -227,7 +227,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getFeature().get(feature)) {
+            if (Boolean.TRUE.equals(data.getFeature().get(feature))) {
                 researchedData.add(data);
             }
         }
@@ -239,7 +239,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getAmbiente().get(ambiente)) {
+            if (Boolean.TRUE.equals(data.getAmbiente().get(ambiente))) {
                 researchedData.add(data);
             }
         }
@@ -251,7 +251,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getLingua().get(lingua)) {
+            if (Boolean.TRUE.equals(data.getLingua().get(lingua))) {
                 researchedData.add(data);
             }
         }
@@ -269,5 +269,9 @@ public class CSVReader {
         }
 
         return researchedData;
+    }
+
+    public Data researchRow(int row) {
+        return fileContent.get(row);
     }
 }

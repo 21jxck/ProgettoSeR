@@ -13,6 +13,7 @@ public class ServerThreads extends Thread {
     private Socket clientSocket;
     private BufferedReader in = null;
     private PrintWriter out = null;
+    private CSVReader csvr = new CSVReader();
 
     public ServerThreads(Socket clientSocket) {
         this.clientSocket = clientSocket;
@@ -35,33 +36,33 @@ public class ServerThreads extends Thread {
             // ciclo di ricezione dal client e invio di risposta
             out.println("Connessione stabilita ('END' per terminarla, '?' per aiuto): ");
             out.flush();
+
             while (true) {
-                CSVReader csvr = new CSVReader();
                 String str = in.readLine();
-                if (str.equals("END"))
-                    break;
+                if (str.equals("END")) break;
 
                 if(str.equals("?")) {
                     out.print("COMANDI INSERIBILI:" +
-                            "\n\rricerca_comune -> visualizza tutte le strutture in un determinato comune. " +
-                            "\n\rricerca_provincia -> visualizza tutte le strutture in una determinata provincia. " +
-                            "\n\rricerca_tipologia -> visualizza tutte le strutture in una determinata tipologia. " +
-                            "\n\rricerca_categoria -> visualizza tutte le strutture in una determinata categoria. " +
-                            "\n\rricerca_stelle -> visualizza tutte le strutture con un determinato numero di stelle. " +
-                            "\n\rricerca_denominazione -> visualizza la struttura con una determinata denominazione. " +
-                            "\n\rricerca_indirizzo -> visualizza la struttura presente in un determinato indirizzo. " +
-                            "\n\rricerca_CAP -> visualizza le strutture presenti in un determinato CAP. " +
-                            "\n\rricerca_numeroTelefono -> visualizza la struttura con un determinato numero di telefono. " +
-                            "\n\rricerca_fax -> visualizza la struttura con un determinato fax. " +
-                            "\n\rricerca_postaElettronica -> visualizza la struttura con una determinata posta elettronica. " +
-                            "\n\rricerca_zona -> visualizza le strutture presenti in una determinata zona. " +
-                            "\n\rricerca_feature -> visualizza le struttre con una determinata feature. " +
-                            "\n\rricerca_ambiente ->visualizza le strutture con un determinato ambiente circostante. " +
-                            "\n\rricerca_lingua -> visualizza le strutture in cui si parla una determinata lingua. " +
-                            "\n\rricerca_codice -> visualizza la struttura con un determinato codice identificativo. " +
-                            "\n\rGET_ROW -> visualizza la struttura nella determinata riga. " +
-                            "\n\rALL -> visualizza tutte le strutture ricettive della Regione Veneto\n\r" +
-                            "\n\rInserire la parola chiave desiderata dopo uno spazio dopo il comando.\n");
+                            "\n\rricerca_comune             -> visualizza tutte le strutture in un determinato comune. " +
+                            "\n\rricerca_provincia          -> visualizza tutte le strutture in una determinata provincia. " +
+                            "\n\rricerca_tipologia          -> visualizza tutte le strutture in una determinata tipologia. " +
+                            "\n\rricerca_categoria          -> visualizza tutte le strutture in una determinata categoria. " +
+                            "\n\rricerca_stelle             -> visualizza tutte le strutture con un determinato numero di stelle. " +
+                            "\n\rricerca_denominazione      -> visualizza la struttura con una determinata denominazione. " +
+                            "\n\rricerca_indirizzo          -> visualizza la struttura presente in un determinato indirizzo. " +
+                            "\n\rricerca_CAP                -> visualizza le strutture presenti in un determinato CAP. " +
+                            "\n\rricerca_numeroTelefono     -> visualizza la struttura con un determinato numero di telefono. " +
+                            "\n\rricerca_fax                -> visualizza la struttura con un determinato fax. " +
+                            "\n\rricerca_postaElettronica   -> visualizza la struttura con una determinata posta elettronica. " +
+                            "\n\rricerca_zona               -> visualizza le strutture presenti in una determinata zona. " +
+                            "\n\rricerca_feature            -> visualizza le struttre con una determinata feature. " +
+                            "\n\rricerca_ambiente           -> visualizza le strutture con un determinato ambiente circostante. " +
+                            "\n\rricerca_lingua             -> visualizza le strutture in cui si parla una determinata lingua. " +
+                            "\n\rricerca_codice             -> visualizza la struttura con un determinato codice identificativo. " +
+                            "\n\rGET_ROW                    -> visualizza la struttura nella determinata riga. " +
+                            "\n\rALL                        -> visualizza tutte le strutture ricettive della Regione Veneto\n\r" +
+                            "\n\rInserisci la caratteristica della struttura ricettiva uno spazio dopo il comando.\n\r");
+                    out.flush();
                     continue;
                 }
 
@@ -72,6 +73,14 @@ public class ServerThreads extends Thread {
                         List<Data> comune = csvr.researchComune(words[1]);
 
                         for(Data dato : comune) {
+                            out.print(dato.toString() + "\n\r");
+                            out.flush();
+                        }
+                        break;
+                    case "ricerca_provincia":
+                        List<Data> provincia = csvr.researchProvincia(words[1]);
+
+                        for(Data dato : provincia) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
                         }
@@ -125,7 +134,7 @@ public class ServerThreads extends Thread {
                         }
                         break;
                     case "ricerca_numeroTelefono":
-                        List<Data> numeroTelefono = csvr.researchCap(words[1]);
+                        List<Data> numeroTelefono = csvr.researchNTelefono(words[1]);
 
                         for(Data dato : numeroTelefono) {
                             out.print(dato.toString() + "\n\r");
@@ -133,7 +142,7 @@ public class ServerThreads extends Thread {
                         }
                         break;
                     case "ricerca_fax":
-                        List<Data> fax = csvr.researchCap(words[1]);
+                        List<Data> fax = csvr.researchFax(words[1]);
 
                         for(Data dato : fax) {
                             out.print(dato.toString() + "\n\r");
@@ -141,7 +150,7 @@ public class ServerThreads extends Thread {
                         }
                         break;
                     case "ricerca_postaElettronica":
-                        List<Data> postaElettronica = csvr.researchCap(words[1]);
+                        List<Data> postaElettronica = csvr.researchPostaElettronica(words[1]);
 
                         for(Data dato : postaElettronica) {
                             out.print(dato.toString() + "\n\r");
@@ -149,7 +158,7 @@ public class ServerThreads extends Thread {
                         }
                         break;
                     case "ricerca_zona":
-                        List<Data> zona = csvr.researchCap(words[1]);
+                        List<Data> zona = csvr.researchZona(words[1]);
 
                         for(Data dato : zona) {
                             out.print(dato.toString() + "\n\r");
@@ -157,7 +166,7 @@ public class ServerThreads extends Thread {
                         }
                         break;
                     case "ricerca_feature":
-                        List<Data> feature = csvr.researchCap(words[1]);
+                        List<Data> feature = csvr.researchFeature(words[1]);
 
                         for(Data dato : feature) {
                             out.print(dato.toString() + "\n\r");
@@ -165,7 +174,7 @@ public class ServerThreads extends Thread {
                         }
                         break;
                     case "ricerca_ambiente":
-                        List<Data> ambiente = csvr.researchCap(words[1]);
+                        List<Data> ambiente = csvr.researchAmbiente(words[1]);
 
                         for(Data dato : ambiente) {
                             out.print(dato.toString() + "\n\r");
@@ -173,7 +182,7 @@ public class ServerThreads extends Thread {
                         }
                         break;
                     case "ricerca_lingua":
-                        List<Data> lingua = csvr.researchCap(words[1]);
+                        List<Data> lingua = csvr.researchLingua(words[1]);
 
                         for(Data dato : lingua) {
                             out.print(dato.toString() + "\n\r");
@@ -181,15 +190,25 @@ public class ServerThreads extends Thread {
                         }
                         break;
                     case "ricerca_codice":
-                        List<Data> codice = csvr.researchCap(words[1]);
+                        List<Data> codice = csvr.researchCodice(words[1]);
 
                         for(Data dato : codice) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
                         }
                         break;
+                    case "GET_ROW":
+                        out.print(csvr.researchRow(Integer.parseInt(words[1]) - 1).toString());
+                        out.flush();
+                        break;
+                    case "ALL":
+                        for (Data d : csvr.fileContent) {
+                            out.println(d.toString());
+                            out.flush();
+                        }
+                        break;
                     default:
-                        out.print("Errore nel comando!\n\r");
+                        out.print("Errore nel comando! \n\r");
                         out.flush();
                 }
             }

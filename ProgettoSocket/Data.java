@@ -185,34 +185,52 @@ public class Data {
 
     @Override
     public String toString() {
-        String s = "";
+        String s = "===============================================================\n\r";
         s += tipologia + " " + denominazione;
 
         if(!numeroStelle.isEmpty()) {
-            s += " Stelle: " + numeroStelle + "\n\r";
+            s += ", Stelle: " + numeroStelle;
         }
 
-        s += "\n\rComune: " + comune + ", Provincia: " + provincia + ", Indirizzo: " + indirizzo + ", CAP: " + cap + "\n\r" +
-                "Numero di telefono: " + numTelefono + ", Fax: " + fax + ", Posta elettronica: " + postaElettronica + "\n\r" +
-                "Features: ";
+        if(!categoria.isEmpty()) {
+            s += ", Categoria: " + categoria;
+        }
+
+        s += ", Codice identificativo: " + codice + "\n\rComune: " + comune +
+                ", Provincia: " + provincia + ", Indirizzo: " + indirizzo +
+                ", CAP: " + cap + ", Zona: " + zona + "\n\r";
+
+        if(!numTelefono.isEmpty()) {
+            s += "Numero di telefono: " + numTelefono ;
+        }
+        if(!fax.isEmpty()) {
+            s += ", Fax: " + fax ;
+        }
+        if(!postaElettronica.isEmpty()) {
+            s += ", Posta elettronica: " + postaElettronica;
+        }
+        s += "\n\rFeatures: ";
 
         String featuresPresenti = "";
         for (int i = 0; i < (CSVReader.costantFeatureKey.size() / 2); i++) {
-            if (features.containsKey(CSVReader.costantFeatureKey.get(i)) && Boolean.TRUE.equals(features.get(CSVReader.costantFeatureKey.get(i)))) {
+            if (features.containsKey(CSVReader.costantFeatureKey.get(i)) &&
+                    Boolean.TRUE.equals(features.get(CSVReader.costantFeatureKey.get(i)))) {
                 featuresPresenti += CSVReader.costantFeatureKey.get(i) + " ";
             }
         }
 
         String ambientiPresenti = "";
         for (int i = 0; i < (CSVReader.costantAmbientKey.size() / 2); i++) {
-            if (ambienti.containsKey(CSVReader.costantAmbientKey.get(i)) && Boolean.TRUE.equals(ambienti.get(CSVReader.costantAmbientKey.get(i)))) {
+            if (ambienti.containsKey(CSVReader.costantAmbientKey.get(i)) &&
+                    Boolean.TRUE.equals(ambienti.get(CSVReader.costantAmbientKey.get(i)))) {
                 ambientiPresenti += CSVReader.costantAmbientKey.get(i) + " ";
             }
         }
 
         String linguePresenti = "";
         for (int i = 0; i < (CSVReader.costantLanguageKey.size() / 2); i++) {
-            if (lingue.containsKey(CSVReader.costantLanguageKey.get(i)) && Boolean.TRUE.equals(lingue.get(CSVReader.costantLanguageKey.get(i)))) {
+            if (lingue.containsKey(CSVReader.costantLanguageKey.get(i)) &&
+                    Boolean.TRUE.equals(lingue.get(CSVReader.costantLanguageKey.get(i)))) {
                 linguePresenti += CSVReader.costantLanguageKey.get(i) + " ";
             }
         }
@@ -222,7 +240,7 @@ public class Data {
         }
 
         if(ambientiPresenti.isEmpty()) {
-            ambientiPresenti = "nessuna.";
+            ambientiPresenti = "niente.";
         }
 
         if(linguePresenti.isEmpty()) {
@@ -230,6 +248,6 @@ public class Data {
         }
         s += featuresPresenti + "\n\rAmbiente circostante: " + ambientiPresenti + "\n\rLingue straniere parlate: " + linguePresenti + "\n\r";
 
-        return s;
+        return s + "===============================================================\n\r";
     }
 }
