@@ -89,9 +89,7 @@ public class Data {
     }
 
     public Boolean contenuto(String presente) {
-        if(presente.equalsIgnoreCase("Si")) {
-            return true;
-        }
+        if(presente.equalsIgnoreCase("Si")) return true;
         return false;
     }
 

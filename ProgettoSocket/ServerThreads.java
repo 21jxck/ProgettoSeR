@@ -2,7 +2,7 @@
 
 import java.io.*;
 import java.net.*;
-import java.util.List;
+import java.util.*;
 
 /**
  *
@@ -35,11 +35,14 @@ public class ServerThreads extends Thread {
 
             // ciclo di ricezione dal client e invio di risposta
             out.println("Connessione stabilita ('END' per terminarla, '?' per aiuto): ");
+            out.println("END_OF_MESSAGE");
             out.flush();
 
             while (true) {
                 String str = in.readLine();
                 if (str.equals("END")) break;
+
+                System.out.println("Messaggio client: " + str);
 
                 if(str.equals("?")) {
                     out.print("COMANDI INSERIBILI:" +
@@ -62,6 +65,9 @@ public class ServerThreads extends Thread {
                             "\n\rGET_ROW                    -> visualizza la struttura nella determinata riga. " +
                             "\n\rALL                        -> visualizza tutte le strutture ricettive della Regione Veneto\n\r" +
                             "\n\rInserisci la caratteristica della struttura ricettiva uno spazio dopo il comando.\n\r");
+
+                    out.flush();
+                    out.println("END_OF_MESSAGE");
                     out.flush();
                     continue;
                 }
@@ -204,13 +210,16 @@ public class ServerThreads extends Thread {
                     case "ALL":
                         for (Data d : csvr.fileContent) {
                             out.println(d.toString());
-                            out.flush();
                         }
+                        out.flush();
                         break;
                     default:
                         out.print("Errore nel comando! \n\r");
                         out.flush();
+                        break;
                 }
+                out.println("END_OF_MESSAGE");
+                out.flush();
             }
 
             // chiusura di stream e socket
