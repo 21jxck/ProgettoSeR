@@ -78,6 +78,12 @@ public class ServerThreads extends Thread {
                     case "ricerca_comune":
                         List<Data> comune = csvr.researchComune(words[1]);
 
+                        if(comune.isEmpty()) {
+                            out.println("Errore: la parola chiave è errata! ");
+                            out.flush();
+                            break;
+                        }
+
                         for(Data dato : comune) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
@@ -85,6 +91,12 @@ public class ServerThreads extends Thread {
                         break;
                     case "ricerca_provincia":
                         List<Data> provincia = csvr.researchProvincia(words[1]);
+
+                        if(provincia.isEmpty()) {
+                            out.println("Errore: la parola chiave è errata! ");
+                            out.flush();
+                            break;
+                        }
 
                         for(Data dato : provincia) {
                             out.print(dato.toString() + "\n\r");
@@ -94,6 +106,12 @@ public class ServerThreads extends Thread {
                     case "ricerca_tipologia":
                         List<Data> tipologia = csvr.researchTipologia(words[1]);
 
+                        if(tipologia.isEmpty()) {
+                            out.println("Errore: la parola chiave è errata! ");
+                            out.flush();
+                            break;
+                        }
+
                         for(Data dato : tipologia) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
@@ -101,6 +119,12 @@ public class ServerThreads extends Thread {
                         break;
                     case "ricerca_categoria":
                         List<Data> categoria = csvr.researchCategoria(words[1]);
+
+                        if(categoria.isEmpty()) {
+                            out.println("Errore: la parola chiave è errata! ");
+                            out.flush();
+                            break;
+                        }
 
                         for(Data dato : categoria) {
                             out.print(dato.toString() + "\n\r");
@@ -110,6 +134,12 @@ public class ServerThreads extends Thread {
                     case "ricerca_stelle":
                         List<Data> stelle = csvr.researchNStelle(words[1]);
 
+                        if(stelle.isEmpty()) {
+                            out.println("Errore: la parola chiave è errata! ");
+                            out.flush();
+                            break;
+                        }
+
                         for(Data dato : stelle) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
@@ -117,6 +147,12 @@ public class ServerThreads extends Thread {
                         break;
                     case "ricerca_denominazione":
                         List<Data> denominazione = csvr.researchDenominazione(words[1]);
+
+                        if(denominazione.isEmpty()) {
+                            out.println("Errore: la parola chiave è errata! ");
+                            out.flush();
+                            break;
+                        }
 
                         for(Data dato : denominazione) {
                             out.print(dato.toString() + "\n\r");
@@ -126,6 +162,12 @@ public class ServerThreads extends Thread {
                     case "ricerca_indirizzo":
                         List<Data> indirizzo = csvr.researchIndirizzo(words[1]);
 
+                        if(indirizzo.isEmpty()) {
+                            out.println("Errore: la parola chiave è errata! ");
+                            out.flush();
+                            break;
+                        }
+
                         for(Data dato : indirizzo) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
@@ -133,6 +175,12 @@ public class ServerThreads extends Thread {
                         break;
                     case "ricerca_CAP":
                         List<Data> cap = csvr.researchCap(words[1]);
+
+                        if(cap.isEmpty()) {
+                            out.println("Errore: la parola chiave è errata! ");
+                            out.flush();
+                            break;
+                        }
 
                         for(Data dato : cap) {
                             out.print(dato.toString() + "\n\r");
@@ -142,6 +190,12 @@ public class ServerThreads extends Thread {
                     case "ricerca_numeroTelefono":
                         List<Data> numeroTelefono = csvr.researchNTelefono(words[1]);
 
+                        if(numeroTelefono.isEmpty()) {
+                            out.println("Errore: la parola chiave è errata! ");
+                            out.flush();
+                            break;
+                        }
+
                         for(Data dato : numeroTelefono) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
@@ -149,6 +203,12 @@ public class ServerThreads extends Thread {
                         break;
                     case "ricerca_fax":
                         List<Data> fax = csvr.researchFax(words[1]);
+
+                        if(fax.isEmpty()) {
+                            out.println("Errore: la parola chiave è errata! ");
+                            out.flush();
+                            break;
+                        }
 
                         for(Data dato : fax) {
                             out.print(dato.toString() + "\n\r");
@@ -158,6 +218,12 @@ public class ServerThreads extends Thread {
                     case "ricerca_postaElettronica":
                         List<Data> postaElettronica = csvr.researchPostaElettronica(words[1]);
 
+                        if(postaElettronica.isEmpty()) {
+                            out.println("Errore: la parola chiave è errata! ");
+                            out.flush();
+                            break;
+                        }
+
                         for(Data dato : postaElettronica) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
@@ -165,6 +231,12 @@ public class ServerThreads extends Thread {
                         break;
                     case "ricerca_zona":
                         List<Data> zona = csvr.researchZona(words[1]);
+
+                        if(zona.isEmpty()) {
+                            out.println("Errore: la parola chiave è errata! ");
+                            out.flush();
+                            break;
+                        }
 
                         for(Data dato : zona) {
                             out.print(dato.toString() + "\n\r");
@@ -174,6 +246,12 @@ public class ServerThreads extends Thread {
                     case "ricerca_feature":
                         List<Data> feature = csvr.researchFeature(words[1]);
 
+                        if(feature.isEmpty()) {
+                            out.println("Errore: la parola chiave è errata! ");
+                            out.flush();
+                            break;
+                        }
+
                         for(Data dato : feature) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
@@ -181,6 +259,12 @@ public class ServerThreads extends Thread {
                         break;
                     case "ricerca_ambiente":
                         List<Data> ambiente = csvr.researchAmbiente(words[1]);
+
+                        if(ambiente.isEmpty()) {
+                            out.println("Errore: la parola chiave è errata! ");
+                            out.flush();
+                            break;
+                        }
 
                         for(Data dato : ambiente) {
                             out.print(dato.toString() + "\n\r");
@@ -190,6 +274,12 @@ public class ServerThreads extends Thread {
                     case "ricerca_lingua":
                         List<Data> lingua = csvr.researchLingua(words[1]);
 
+                        if(lingua.isEmpty()) {
+                            out.println("Errore: la parola chiave è errata! ");
+                            out.flush();
+                            break;
+                        }
+
                         for(Data dato : lingua) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
@@ -198,19 +288,29 @@ public class ServerThreads extends Thread {
                     case "ricerca_codice":
                         List<Data> codice = csvr.researchCodice(words[1]);
 
+                        if(codice.isEmpty()) {
+                            out.println("Errore: la parola chiave è errata! ");
+                            out.flush();
+                            break;
+                        }
+
                         for(Data dato : codice) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
                         }
                         break;
                     case "GET_ROW":
+                        if((Integer.parseInt(words[1])- 1) < 1 && (Integer.parseInt(words[1])- 1) > csvr.fileContent.size()) {
+                            out.println("Errore: il numero è fuori dai limiti! ");
+                            out.flush();
+                            break;
+                        }
+
                         out.print(csvr.researchRow(Integer.parseInt(words[1]) - 1).toString());
                         out.flush();
                         break;
                     case "ALL":
-                        for (Data d : csvr.fileContent) {
-                            out.println(d.toString());
-                        }
+                        for (Data d : csvr.fileContent) out.println(d.toString());
                         out.flush();
                         break;
                     default:

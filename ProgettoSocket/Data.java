@@ -90,7 +90,7 @@ public class Data {
 
     public Boolean contenuto(String presente) {
         if(presente.equalsIgnoreCase("Si")) return true;
-        return false;
+        else return false;
     }
 
     public String getComune() {
@@ -210,26 +210,26 @@ public class Data {
         s += "\n\rFeatures: ";
 
         String featuresPresenti = "";
-        for (int i = 0; i < (CSVReader.costantFeatureKey.size() / 2); i++) {
+        for (int i = 0; i < CSVReader.costantFeatureKey.size(); i++) {
             if (features.containsKey(CSVReader.costantFeatureKey.get(i)) &&
                     Boolean.TRUE.equals(features.get(CSVReader.costantFeatureKey.get(i)))) {
-                featuresPresenti += CSVReader.costantFeatureKey.get(i) + " ";
+                featuresPresenti += CSVReader.costantFeatureKey.get(i) + "  ";
             }
         }
 
         String ambientiPresenti = "";
-        for (int i = 0; i < (CSVReader.costantAmbientKey.size() / 2); i++) {
+        for (int i = 0; i < CSVReader.costantAmbientKey.size(); i++) {
             if (ambienti.containsKey(CSVReader.costantAmbientKey.get(i)) &&
                     Boolean.TRUE.equals(ambienti.get(CSVReader.costantAmbientKey.get(i)))) {
-                ambientiPresenti += CSVReader.costantAmbientKey.get(i) + " ";
+                ambientiPresenti += CSVReader.costantAmbientKey.get(i) + "  ";
             }
         }
 
         String linguePresenti = "";
-        for (int i = 0; i < (CSVReader.costantLanguageKey.size() / 2); i++) {
+        for (int i = 0; i < CSVReader.costantLanguageKey.size(); i++) {
             if (lingue.containsKey(CSVReader.costantLanguageKey.get(i)) &&
                     Boolean.TRUE.equals(lingue.get(CSVReader.costantLanguageKey.get(i)))) {
-                linguePresenti += CSVReader.costantLanguageKey.get(i) + " ";
+                linguePresenti += CSVReader.costantLanguageKey.get(i) + "  ";
             }
         }
 

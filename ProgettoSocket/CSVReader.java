@@ -13,6 +13,11 @@ public class CSVReader {
 
     // metodo per leggere i dati dal file
     public void readCSV() {
+        fileContent.clear();
+        costantFeatureKey.clear();
+        costantAmbientKey.clear();
+        costantLanguageKey.clear();
+
         try (BufferedReader br = new BufferedReader(new FileReader("ProgettoSocket\\Regione-Veneto---Elenco-strutture-ricettive.csv"))) {
             String fileLine;
             int nLinea = 0;
@@ -83,9 +88,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getComune().equalsIgnoreCase(comune)) {
-                researchedData.add(data);
-            }
+            if (data.getComune().equalsIgnoreCase(comune)) researchedData.add(data);
         }
 
         return researchedData;
@@ -95,9 +98,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getProvincia().equalsIgnoreCase(provincia)) {
-                researchedData.add(data);
-            }
+            if (data.getProvincia().equalsIgnoreCase(provincia)) researchedData.add(data);
         }
 
         return researchedData;
@@ -107,9 +108,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getTipologia().equalsIgnoreCase(tipologia)) {
-                researchedData.add(data);
-            }
+            if (data.getTipologia().equalsIgnoreCase(tipologia)) researchedData.add(data);
         }
 
         return researchedData;
@@ -119,9 +118,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getCategoria().equalsIgnoreCase(categoria)) {
-                researchedData.add(data);
-            }
+            if (data.getCategoria().equalsIgnoreCase(categoria)) researchedData.add(data);
         }
 
         return researchedData;
@@ -131,9 +128,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getNumeroStelle().equalsIgnoreCase(nStelle)) {
-                researchedData.add(data);
-            }
+            if (data.getNumeroStelle().equalsIgnoreCase(nStelle)) researchedData.add(data);
         }
 
         return researchedData;
@@ -143,9 +138,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getDenominazione().equalsIgnoreCase(denominazione)) {
-                researchedData.add(data);
-            }
+            if (data.getDenominazione().equalsIgnoreCase(denominazione)) researchedData.add(data);
         }
 
         return researchedData;
@@ -155,9 +148,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getIndirizzo().equalsIgnoreCase(indirizzo)) {
-                researchedData.add(data);
-            }
+            if (data.getIndirizzo().equalsIgnoreCase(indirizzo)) researchedData.add(data);
         }
 
         return researchedData;
@@ -167,9 +158,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getCap().equalsIgnoreCase(cap)) {
-                researchedData.add(data);
-            }
+            if (data.getCap().equalsIgnoreCase(cap)) researchedData.add(data);
         }
 
         return researchedData;
@@ -179,9 +168,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getNumTelefono().equalsIgnoreCase(nTelefono)) {
-                researchedData.add(data);
-            }
+            if (data.getNumTelefono().equalsIgnoreCase(nTelefono)) researchedData.add(data);
         }
 
         return researchedData;
@@ -191,9 +178,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getFax().equalsIgnoreCase(fax)) {
-                researchedData.add(data);
-            }
+            if (data.getFax().equalsIgnoreCase(fax)) researchedData.add(data);
         }
 
         return researchedData;
@@ -203,9 +188,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getPostaElettronica().equalsIgnoreCase(postaElettronica)) {
-                researchedData.add(data);
-            }
+            if (data.getPostaElettronica().equalsIgnoreCase(postaElettronica)) researchedData.add(data);
         }
 
         return researchedData;
@@ -215,9 +198,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getZona().equalsIgnoreCase(zona)) {
-                researchedData.add(data);
-            }
+            if (data.getZona().equalsIgnoreCase(zona)) researchedData.add(data);
         }
 
         return researchedData;
@@ -227,9 +208,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (Boolean.TRUE.equals(data.getFeature().get(feature))) {
-                researchedData.add(data);
-            }
+            if (data.getFeature().get(feature) != null && data.getFeature().get(feature)) researchedData.add(data);
         }
 
         return researchedData;
@@ -239,9 +218,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (Boolean.TRUE.equals(data.getAmbiente().get(ambiente))) {
-                researchedData.add(data);
-            }
+            if(data.getAmbiente().get(ambiente) != null && data.getAmbiente().get(ambiente)) researchedData.add(data);
         }
 
         return researchedData;
@@ -251,9 +228,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (Boolean.TRUE.equals(data.getLingua().get(lingua))) {
-                researchedData.add(data);
-            }
+            if (data.getLingua().get(lingua) != null && data.getLingua().get(lingua)) researchedData.add(data);
         }
 
         return researchedData;
@@ -263,9 +238,7 @@ public class CSVReader {
         List<Data> researchedData = new ArrayList<>();
 
         for (Data data : fileContent) {
-            if (data.getCodice().equalsIgnoreCase(codice)) {
-                researchedData.add(data);
-            }
+            if (data.getCodice().equalsIgnoreCase(codice)) researchedData.add(data);
         }
 
         return researchedData;
