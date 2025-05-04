@@ -8,7 +8,7 @@ public class MainClient {
     static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Menu menu = new Menu();
+        //new Menu();
         try {
             System.out.println("Inserisci l'indirizzo del server (default: " + ADDRESS + "):");
             String serverInput = input.nextLine().trim();

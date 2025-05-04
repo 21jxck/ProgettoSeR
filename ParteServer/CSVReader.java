@@ -84,160 +84,160 @@ public class CSVReader {
     }
 
     // metodi per la ricerca dei dati
-    public List<Data> researchComune(String comune) {
+    public List<Data> researchComune(String comune, List<Data> currentContent) {
         List<Data> researchedData = new ArrayList<>();
 
-        for (Data data : fileContent) {
+        for (Data data : currentContent) {
             if (data.getComune().equalsIgnoreCase(comune)) researchedData.add(data);
         }
 
         return researchedData;
     }
 
-    public List<Data> researchProvincia(String provincia) {
+    public List<Data> researchProvincia(String provincia, List<Data> currentContent) {
         List<Data> researchedData = new ArrayList<>();
 
-        for (Data data : fileContent) {
+        for (Data data : currentContent) {
             if (data.getProvincia().equalsIgnoreCase(provincia)) researchedData.add(data);
         }
 
         return researchedData;
     }
 
-    public List<Data> researchTipologia(String tipologia) {
+    public List<Data> researchTipologia(String tipologia, List<Data> currentContent) {
         List<Data> researchedData = new ArrayList<>();
 
-        for (Data data : fileContent) {
+        for (Data data : currentContent) {
             if (data.getTipologia().equalsIgnoreCase(tipologia)) researchedData.add(data);
         }
 
         return researchedData;
     }
 
-    public List<Data> researchCategoria(String categoria) {
+    public List<Data> researchCategoria(String categoria, List<Data> currentContent) {
         List<Data> researchedData = new ArrayList<>();
 
-        for (Data data : fileContent) {
+        for (Data data : currentContent) {
             if (data.getCategoria().equalsIgnoreCase(categoria)) researchedData.add(data);
         }
 
         return researchedData;
     }
 
-    public List<Data> researchNStelle(String nStelle) {
+    public List<Data> researchNStelle(String nStelle, List<Data> currentContent) {
         List<Data> researchedData = new ArrayList<>();
 
-        for (Data data : fileContent) {
+        for (Data data : currentContent) {
             if (data.getNumeroStelle().equalsIgnoreCase(nStelle)) researchedData.add(data);
         }
 
         return researchedData;
     }
 
-    public List<Data> researchDenominazione(String denominazione) {
+    public List<Data> researchDenominazione(String denominazione, List<Data> currentContent) {
         List<Data> researchedData = new ArrayList<>();
 
-        for (Data data : fileContent) {
+        for (Data data : currentContent) {
             if (data.getDenominazione().equalsIgnoreCase(denominazione)) researchedData.add(data);
         }
 
         return researchedData;
     }
 
-    public List<Data> researchIndirizzo(String indirizzo) {
+    public List<Data> researchIndirizzo(String indirizzo, List<Data> currentContent) {
         List<Data> researchedData = new ArrayList<>();
 
-        for (Data data : fileContent) {
+        for (Data data : currentContent) {
             if (data.getIndirizzo().equalsIgnoreCase(indirizzo)) researchedData.add(data);
         }
 
         return researchedData;
     }
 
-    public List<Data> researchCap(String cap) {
+    public List<Data> researchCap(String cap, List<Data> currentContent) {
         List<Data> researchedData = new ArrayList<>();
 
-        for (Data data : fileContent) {
+        for (Data data : currentContent) {
             if (data.getCap().equalsIgnoreCase(cap)) researchedData.add(data);
         }
 
         return researchedData;
     }
 
-    public List<Data> researchNTelefono(String nTelefono) {
+    public List<Data> researchNTelefono(String nTelefono, List<Data> currentContent) {
         List<Data> researchedData = new ArrayList<>();
 
-        for (Data data : fileContent) {
+        for (Data data : currentContent) {
             if (data.getNumTelefono().equalsIgnoreCase(nTelefono)) researchedData.add(data);
         }
 
         return researchedData;
     }
 
-    public List<Data> researchFax(String fax) {
+    public List<Data> researchFax(String fax, List<Data> currentContent) {
         List<Data> researchedData = new ArrayList<>();
 
-        for (Data data : fileContent) {
+        for (Data data : currentContent) {
             if (data.getFax().equalsIgnoreCase(fax)) researchedData.add(data);
         }
 
         return researchedData;
     }
 
-    public List<Data> researchPostaElettronica(String postaElettronica) {
+    public List<Data> researchPostaElettronica(String postaElettronica, List<Data> currentContent) {
         List<Data> researchedData = new ArrayList<>();
 
-        for (Data data : fileContent) {
+        for (Data data : currentContent) {
             if (data.getPostaElettronica().equalsIgnoreCase(postaElettronica)) researchedData.add(data);
         }
 
         return researchedData;
     }
 
-    public List<Data> researchZona(String zona) {
+    public List<Data> researchZona(String zona, List<Data> currentContent) {
         List<Data> researchedData = new ArrayList<>();
 
-        for (Data data : fileContent) {
+        for (Data data : currentContent) {
             if (data.getZona().equalsIgnoreCase(zona)) researchedData.add(data);
         }
 
         return researchedData;
     }
 
-    public List<Data> researchFeature(String feature) {
+    public List<Data> researchFeature(String feature, List<Data> currentContent) {
         List<Data> researchedData = new ArrayList<>();
 
-        for (Data data : fileContent) {
+        for (Data data : currentContent) {
             if (data.getFeature().get(feature) != null && data.getFeature().get(feature)) researchedData.add(data);
         }
 
         return researchedData;
     }
 
-    public List<Data> researchAmbiente(String ambiente) {
+    public List<Data> researchAmbiente(String ambiente, List<Data> currentContent) {
         List<Data> researchedData = new ArrayList<>();
 
-        for (Data data : fileContent) {
+        for (Data data : currentContent) {
             if(data.getAmbiente().get(ambiente) != null && data.getAmbiente().get(ambiente)) researchedData.add(data);
         }
 
         return researchedData;
     }
 
-    public List<Data> researchLingua(String lingua) {
+    public List<Data> researchLingua(String lingua, List<Data> currentContent) {
         List<Data> researchedData = new ArrayList<>();
 
-        for (Data data : fileContent) {
+        for (Data data : currentContent) {
             if (data.getLingua().get(lingua) != null && data.getLingua().get(lingua)) researchedData.add(data);
         }
 
         return researchedData;
     }
 
-    public List<Data> researchCodice(String codice) {
+    public List<Data> researchCodice(String codice, List<Data> currentContent) {
         List<Data> researchedData = new ArrayList<>();
 
-        for (Data data : fileContent) {
+        for (Data data : currentContent) {
             if (data.getCodice().equalsIgnoreCase(codice)) researchedData.add(data);
         }
 
