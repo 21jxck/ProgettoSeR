@@ -18,12 +18,10 @@ public class Menu extends JFrame {
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
 
-        // Aggiungi titolo
         JLabel titolo = new JLabel("STRUTTURE RICETTIVE REGIONE VENETO", SwingConstants.CENTER);
         titolo.setFont(new Font("Franklin Gothic Medium Cond", Font.BOLD, 35));
         add(titolo, BorderLayout.NORTH);
 
-        // Aggiungi pannello con i pulsanti
         JPanel buttonPanel = createButtonPanel();
         add(buttonPanel, BorderLayout.CENTER);
 

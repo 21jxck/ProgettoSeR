@@ -11,7 +11,6 @@ public class CSVReader {
         readCSV();
     }
 
-    // metodo per leggere i dati dal file
     public void readCSV() {
         fileContent.clear();
         costantFeatureKey.clear();
@@ -83,7 +82,6 @@ public class CSVReader {
         }
     }
 
-    // metodi per la ricerca dei dati
     public List<Data> researchComune(String comune, List<Data> currentContent) {
         List<Data> researchedData = new ArrayList<>();
 

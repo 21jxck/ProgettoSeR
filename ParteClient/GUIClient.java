@@ -49,7 +49,8 @@ public class GUIClient extends JFrame {
             "ricerca_categoria", "ricerca_stelle", "ricerca_denominazione",
             "ricerca_indirizzo", "ricerca_CAP", "ricerca_numeroTelefono",
             "ricerca_fax", "ricerca_email", "ricerca_zona", "ricerca_feature",
-            "ricerca_ambiente", "ricerca_lingua", "ricerca_codice"
+            "ricerca_ambiente", "ricerca_lingua", "ricerca_codice", "GET_ROW",
+            "ALL"
         };
 
         JComboBox<String> ricerche = new JComboBox<>(opzioniRicerca);
@@ -76,15 +77,17 @@ public class GUIClient extends JFrame {
     }
 
     public void firstMessage() {
-        try {
-            String line;
-            while ((line = in.readLine()) != null) {
-                if (line.equals("END_OF_MESSAGE")) break;
-                out.flush();
+        new Thread(() -> {
+            try {
+                String line;
+                while ((line = in.readLine()) != null) {
+                    if (line.equals("END_OF_MESSAGE")) break;
+                    outputArea.append(line + "\n");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        }).start();
     }
 
     public void terminaConnessione() {
@@ -107,11 +110,17 @@ public class GUIClient extends JFrame {
 
     public void sendMessages(JComboBox<String> ricerche, JTextField keywordField) {
         outputArea.setText("");
-        
-        String messaggio = ricerche.getSelectedItem() + " " + keywordField.getText();
+    
+        String keyword = keywordField.getText().trim();
+        if (keyword.isEmpty() && ricerche.getSelectedItem() != "ALL") {
+            JOptionPane.showMessageDialog(this, "Inserisci una parola chiave.", "Attenzione", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+    
+        String messaggio = ricerche.getSelectedItem() + " " + keyword;
         out.println(messaggio);
         out.flush();
-
+    
         getAnswers();
     }
 

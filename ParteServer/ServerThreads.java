@@ -25,16 +25,13 @@ public class ServerThreads extends Thread {
         try {
             System.out.println("Connection accepted: " + clientSocket);
 
-            // creazione stream di input da clientSocket
             InputStreamReader isr = new InputStreamReader(clientSocket.getInputStream());
             in = new BufferedReader(isr);
 
-            // creazione stream di output su clientSocket
             OutputStreamWriter osw = new OutputStreamWriter(clientSocket.getOutputStream());
             BufferedWriter bw = new BufferedWriter(osw);
             out = new PrintWriter(bw, true);
 
-            // ciclo di ricezione dal client e invio di risposta
             out.println("Connessione stabilita ('END' per terminarla, '?' per aiuto): ");
             out.println("END_OF_MESSAGE");
             out.flush();
@@ -366,7 +363,6 @@ public class ServerThreads extends Thread {
                 out.flush();
             }
 
-            // chiusura di stream e socket
             System.out.println("EchoServer: closing...");
             out.close();
             in.close();

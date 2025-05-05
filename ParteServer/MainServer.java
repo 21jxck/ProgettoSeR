@@ -9,7 +9,7 @@ import java.net.*;
  */
 public class MainServer {
 
-    public static final int PORT = 1050; // porta al di fuori del range 1-1024 !
+    public static final int PORT = 1050;
 
     /**
      * @param args the command line arguments
@@ -21,7 +21,6 @@ public class MainServer {
             System.out.println("Server Socket: " + serverSocket);
 
             while (true) {
-                // bloccante finchè non avviene una connessione
                 Socket clientSocket = serverSocket.accept();
 
                 ServerThreads thread = new ServerThreads(clientSocket);
