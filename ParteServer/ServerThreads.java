@@ -373,6 +373,7 @@ public class ServerThreads extends Thread {
             clientSocket.close();
         } catch (IOException e) {
             System.err.println("Accept failed");
+            e.printStackTrace();
         }
     }
 }
