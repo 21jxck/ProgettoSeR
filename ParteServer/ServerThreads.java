@@ -44,6 +44,8 @@ public class ServerThreads extends Thread {
 
                 if(str.equals("?")) {
                     out.print("COMANDI INSERIBILI:" +
+                            "\n\rEND                        -> termina la connessione. " +
+                            "\n\rnuova_ricerca              -> inizializza una nuova ricerca, rimuovendo i filtri precedenti. "+
                             "\n\rricerca_comune             -> visualizza tutte le strutture in un determinato comune. " +
                             "\n\rricerca_provincia          -> visualizza tutte le strutture in una determinata provincia. " +
                             "\n\rricerca_tipologia          -> visualizza tutte le strutture in una determinata tipologia. " +
@@ -58,12 +60,11 @@ public class ServerThreads extends Thread {
                             "\n\rricerca_zona               -> visualizza le strutture presenti in una determinata zona. " +
                             "\n\rricerca_feature            -> visualizza le struttre con una determinata feature. " +
                             "\n\rricerca_ambiente           -> visualizza le strutture con un determinato ambiente circostante. " +
-                            "\n\rricerca_lingua             -> visualizza le strutture in cui si parla una determinata lingua. " +
+                            "\n\rricerca_lingua             -> visualizza le strutture nelle quali si parla una determinata lingua. " +
                             "\n\rricerca_codice             -> visualizza la struttura con un determinato codice identificativo. " +
                             "\n\rGET_ROW                    -> visualizza la struttura nella determinata riga. " +
                             "\n\rALL                        -> visualizza tutte le strutture ricettive della Regione Veneto\n\r" +
                             "\n\rInserisci la caratteristica della struttura ricettiva uno spazio dopo il comando.\n\r");
-
                     out.flush();
                     out.println("END_OF_MESSAGE");
                     out.flush();

@@ -17,7 +17,7 @@ public class CSVReader {
         costantAmbientKey.clear();
         costantLanguageKey.clear();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\jac20\\OneDrive\\Desktop\\ProgettoSeR\\ParteServer\\Regione-Veneto---Elenco-strutture-ricettive.csv"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("ParteServer\\Regione-Veneto---Elenco-strutture-ricettive.csv"))) {
             String fileLine;
             int nLinea = 0;
             while ((fileLine = br.readLine()) != null) {
