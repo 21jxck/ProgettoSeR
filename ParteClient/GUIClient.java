@@ -81,7 +81,7 @@ public class GUIClient extends JFrame {
             try {
                 String line;
                 while ((line = in.readLine()) != null) {
-                    if (line.equals("END_OF_MESSAGE"))
+                    if (line.equals("END_MESSAGE"))
                         break;
 
                 }
@@ -128,7 +128,7 @@ public class GUIClient extends JFrame {
         try {
             String line;
             while ((line = in.readLine()) != null) {
-                if (line.equals("END_OF_MESSAGE"))
+                if (line.equals("END_MESSAGE"))
                     break;
                 outputArea.append(line + "\n");
             }

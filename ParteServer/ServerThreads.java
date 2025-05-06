@@ -33,7 +33,7 @@ public class ServerThreads extends Thread {
             out = new PrintWriter(bw, true);
 
             out.println("Connessione stabilita ('END' per terminarla, '?' per aiuto): ");
-            out.println("END_OF_MESSAGE");
+            out.println("END_MESSAGE");
             out.flush();
 
             while (true) {
@@ -83,7 +83,7 @@ public class ServerThreads extends Thread {
                             +
                             "\n\rInserisci la caratteristica della struttura ricettiva uno spazio dopo il comando.\n\r");
                     out.flush();
-                    out.println("END_OF_MESSAGE");
+                    out.println("END_MESSAGE");
                     out.flush();
                     continue;
                 }
@@ -93,7 +93,7 @@ public class ServerThreads extends Thread {
 
                     out.println("Nuova ricerca iniziata! ");
                     out.flush();
-                    out.println("END_OF_MESSAGE");
+                    out.println("END_MESSAGE");
                     out.flush();
 
                     continue;
@@ -379,7 +379,7 @@ public class ServerThreads extends Thread {
                         out.flush();
                         break;
                 }
-                out.println("END_OF_MESSAGE");
+                out.println("END_MESSAGE");
                 out.flush();
             }
 

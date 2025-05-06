@@ -39,7 +39,7 @@ public class MainClient {
             while (true) {
                 String line;
                 while ((line = in.readLine()) != null) {
-                    if (line.equals("END_OF_MESSAGE"))
+                    if (line.equals("END_MESSAGE"))
                         break;
                     System.out.println(line);
                 }
