@@ -45,12 +45,12 @@ public class GUIClient extends JFrame {
         disconnectButton.addActionListener(click -> terminaConnessione());
 
         String[] opzioniRicerca = {
-            "ricerca_comune", "ricerca_provincia", "ricerca_tipologia",
-            "ricerca_categoria", "ricerca_stelle", "ricerca_denominazione",
-            "ricerca_indirizzo", "ricerca_CAP", "ricerca_numeroTelefono",
-            "ricerca_fax", "ricerca_email", "ricerca_zona", "ricerca_feature",
-            "ricerca_ambiente", "ricerca_lingua", "ricerca_codice", "GET_ROW",
-            "ALL"
+                "ricerca_comune", "ricerca_provincia", "ricerca_tipologia",
+                "ricerca_categoria", "ricerca_stelle", "ricerca_denominazione",
+                "ricerca_indirizzo", "ricerca_CAP", "ricerca_numeroTelefono",
+                "ricerca_fax", "ricerca_email", "ricerca_zona", "ricerca_feature",
+                "ricerca_ambiente", "ricerca_lingua", "ricerca_codice", "GET_ROW",
+                "ALL"
         };
 
         JComboBox<String> ricerche = new JComboBox<>(opzioniRicerca);
@@ -81,8 +81,9 @@ public class GUIClient extends JFrame {
             try {
                 String line;
                 while ((line = in.readLine()) != null) {
-                    if (line.equals("END_OF_MESSAGE")) break;
-                    outputArea.append(line + "\n");
+                    if (line.equals("END_OF_MESSAGE"))
+                        break;
+
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -91,50 +92,48 @@ public class GUIClient extends JFrame {
     }
 
     public void terminaConnessione() {
-        new Thread(() -> {
-            try {
-                if (out != null) {
-                    out.println("END");
-                    out.flush();
-                    out.close();
-                }
-                if (in != null) {
-                    in.close();
-                }
-                dispose();
-            } catch (IOException e) {
-                e.printStackTrace();
+        try {
+            if (out != null) {
+                out.println("END");
+                out.flush();
+                out.close();
             }
-        }).start();
+            if (in != null) {
+                in.close();
+            }
+            dispose();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void sendMessages(JComboBox<String> ricerche, JTextField keywordField) {
         outputArea.setText("");
-    
+
         String keyword = keywordField.getText().trim();
         if (keyword.isEmpty() && ricerche.getSelectedItem() != "ALL") {
-            JOptionPane.showMessageDialog(this, "Inserisci una parola chiave.", "Attenzione", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Inserisci una parola chiave.", "Attenzione",
+                    JOptionPane.WARNING_MESSAGE);
             return;
         }
-    
+
         String messaggio = ricerche.getSelectedItem() + " " + keyword;
         out.println(messaggio);
         out.flush();
-    
+
         getAnswers();
     }
 
     public void getAnswers() {
-        new Thread(() -> {
-            try {
-                String line;
-                while ((line = in.readLine()) != null) {
-                    if (line.equals("END_OF_MESSAGE")) break;
-                    outputArea.append(line + "\n");
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+        try {
+            String line;
+            while ((line = in.readLine()) != null) {
+                if (line.equals("END_OF_MESSAGE"))
+                    break;
+                outputArea.append(line + "\n");
             }
-        }).start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

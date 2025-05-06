@@ -38,32 +38,49 @@ public class ServerThreads extends Thread {
 
             while (true) {
                 String str = in.readLine();
-                if (str.equals("END")) break;
+                if (str.equals("END"))
+                    break;
 
                 System.out.println("Messaggio client: " + str);
 
-                if(str.equals("?")) {
+                if (str.equals("?")) {
                     out.print("COMANDI INSERIBILI:" +
                             "\n\rEND                        -> termina la connessione. " +
-                            "\n\rnuova_ricerca              -> inizializza una nuova ricerca, rimuovendo i filtri precedenti. "+
-                            "\n\rricerca_comune             -> visualizza tutte le strutture in un determinato comune. " +
-                            "\n\rricerca_provincia          -> visualizza tutte le strutture in una determinata provincia. " +
-                            "\n\rricerca_tipologia          -> visualizza tutte le strutture in una determinata tipologia. " +
-                            "\n\rricerca_categoria          -> visualizza tutte le strutture in una determinata categoria. " +
-                            "\n\rricerca_stelle             -> visualizza tutte le strutture con un determinato numero di stelle. " +
-                            "\n\rricerca_denominazione      -> visualizza la struttura con una determinata denominazione. " +
-                            "\n\rricerca_indirizzo          -> visualizza la struttura presente in un determinato indirizzo. " +
-                            "\n\rricerca_CAP                -> visualizza le strutture presenti in un determinato CAP. " +
-                            "\n\rricerca_numeroTelefono     -> visualizza la struttura con un determinato numero di telefono. " +
+                            "\n\rnuova_ricerca              -> inizializza una nuova ricerca, rimuovendo i filtri precedenti. "
+                            +
+                            "\n\rricerca_comune             -> visualizza tutte le strutture in un determinato comune. "
+                            +
+                            "\n\rricerca_provincia          -> visualizza tutte le strutture in una determinata provincia. "
+                            +
+                            "\n\rricerca_tipologia          -> visualizza tutte le strutture in una determinata tipologia. "
+                            +
+                            "\n\rricerca_categoria          -> visualizza tutte le strutture in una determinata categoria. "
+                            +
+                            "\n\rricerca_stelle             -> visualizza tutte le strutture con un determinato numero di stelle. "
+                            +
+                            "\n\rricerca_denominazione      -> visualizza la struttura con una determinata denominazione. "
+                            +
+                            "\n\rricerca_indirizzo          -> visualizza la struttura presente in un determinato indirizzo. "
+                            +
+                            "\n\rricerca_CAP                -> visualizza le strutture presenti in un determinato CAP. "
+                            +
+                            "\n\rricerca_numeroTelefono     -> visualizza la struttura con un determinato numero di telefono. "
+                            +
                             "\n\rricerca_fax                -> visualizza la struttura con un determinato fax. " +
-                            "\n\rricerca_postaElettronica   -> visualizza la struttura con una determinata posta elettronica. " +
-                            "\n\rricerca_zona               -> visualizza le strutture presenti in una determinata zona. " +
+                            "\n\rricerca_postaElettronica   -> visualizza la struttura con una determinata posta elettronica. "
+                            +
+                            "\n\rricerca_zona               -> visualizza le strutture presenti in una determinata zona. "
+                            +
                             "\n\rricerca_feature            -> visualizza le struttre con una determinata feature. " +
-                            "\n\rricerca_ambiente           -> visualizza le strutture con un determinato ambiente circostante. " +
-                            "\n\rricerca_lingua             -> visualizza le strutture nelle quali si parla una determinata lingua. " +
-                            "\n\rricerca_codice             -> visualizza la struttura con un determinato codice identificativo. " +
+                            "\n\rricerca_ambiente           -> visualizza le strutture con un determinato ambiente circostante. "
+                            +
+                            "\n\rricerca_lingua             -> visualizza le strutture nelle quali si parla una determinata lingua. "
+                            +
+                            "\n\rricerca_codice             -> visualizza la struttura con un determinato codice identificativo. "
+                            +
                             "\n\rGET_ROW                    -> visualizza la struttura nella determinata riga. " +
-                            "\n\rALL                        -> visualizza tutte le strutture ricettive della Regione Veneto\n\r" +
+                            "\n\rALL                        -> visualizza tutte le strutture ricettive della Regione Veneto\n\r"
+                            +
                             "\n\rInserisci la caratteristica della struttura ricettiva uno spazio dopo il comando.\n\r");
                     out.flush();
                     out.println("END_OF_MESSAGE");
@@ -71,7 +88,7 @@ public class ServerThreads extends Thread {
                     continue;
                 }
 
-                if(str.equals("nuova_ricerca")) {
+                if (str.equals("nuova_ricerca")) {
                     currentContent = csvr.fileContent;
 
                     out.println("Nuova ricerca iniziata! ");
@@ -84,19 +101,19 @@ public class ServerThreads extends Thread {
 
                 String[] words = str.split(" ", 2);
 
-                switch(words[0]) {
+                switch (words[0]) {
                     case "ricerca_comune":
                         List<Data> comune = csvr.researchComune(words[1], currentContent);
 
                         currentContent = comune;
 
-                        if(comune.isEmpty()) {
+                        if (comune.isEmpty()) {
                             out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
                             out.flush();
                             break;
                         }
 
-                        for(Data dato : comune) {
+                        for (Data dato : comune) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
                         }
@@ -106,13 +123,13 @@ public class ServerThreads extends Thread {
 
                         currentContent = provincia;
 
-                        if(provincia.isEmpty()) {
+                        if (provincia.isEmpty()) {
                             out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
                             out.flush();
                             break;
                         }
 
-                        for(Data dato : provincia) {
+                        for (Data dato : provincia) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
                         }
@@ -122,13 +139,13 @@ public class ServerThreads extends Thread {
 
                         currentContent = tipologia;
 
-                        if(tipologia.isEmpty()) {
+                        if (tipologia.isEmpty()) {
                             out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
                             out.flush();
                             break;
                         }
 
-                        for(Data dato : tipologia) {
+                        for (Data dato : tipologia) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
                         }
@@ -138,13 +155,13 @@ public class ServerThreads extends Thread {
 
                         currentContent = categoria;
 
-                        if(categoria.isEmpty()) {
+                        if (categoria.isEmpty()) {
                             out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
                             out.flush();
                             break;
                         }
 
-                        for(Data dato : categoria) {
+                        for (Data dato : categoria) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
                         }
@@ -154,13 +171,13 @@ public class ServerThreads extends Thread {
 
                         currentContent = stelle;
 
-                        if(stelle.isEmpty()) {
+                        if (stelle.isEmpty()) {
                             out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
                             out.flush();
                             break;
                         }
 
-                        for(Data dato : stelle) {
+                        for (Data dato : stelle) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
                         }
@@ -170,13 +187,13 @@ public class ServerThreads extends Thread {
 
                         currentContent = denominazione;
 
-                        if(denominazione.isEmpty()) {
+                        if (denominazione.isEmpty()) {
                             out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
                             out.flush();
                             break;
                         }
 
-                        for(Data dato : denominazione) {
+                        for (Data dato : denominazione) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
                         }
@@ -186,13 +203,13 @@ public class ServerThreads extends Thread {
 
                         currentContent = indirizzo;
 
-                        if(indirizzo.isEmpty()) {
+                        if (indirizzo.isEmpty()) {
                             out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
                             out.flush();
                             break;
                         }
 
-                        for(Data dato : indirizzo) {
+                        for (Data dato : indirizzo) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
                         }
@@ -202,13 +219,13 @@ public class ServerThreads extends Thread {
 
                         currentContent = cap;
 
-                        if(cap.isEmpty()) {
+                        if (cap.isEmpty()) {
                             out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
                             out.flush();
                             break;
                         }
 
-                        for(Data dato : cap) {
+                        for (Data dato : cap) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
                         }
@@ -218,13 +235,13 @@ public class ServerThreads extends Thread {
 
                         currentContent = numeroTelefono;
 
-                        if(numeroTelefono.isEmpty()) {
+                        if (numeroTelefono.isEmpty()) {
                             out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
                             out.flush();
                             break;
                         }
 
-                        for(Data dato : numeroTelefono) {
+                        for (Data dato : numeroTelefono) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
                         }
@@ -234,13 +251,13 @@ public class ServerThreads extends Thread {
 
                         currentContent = fax;
 
-                        if(fax.isEmpty()) {
+                        if (fax.isEmpty()) {
                             out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
                             out.flush();
                             break;
                         }
 
-                        for(Data dato : fax) {
+                        for (Data dato : fax) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
                         }
@@ -250,13 +267,13 @@ public class ServerThreads extends Thread {
 
                         currentContent = postaElettronica;
 
-                        if(postaElettronica.isEmpty()) {
+                        if (postaElettronica.isEmpty()) {
                             out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
                             out.flush();
                             break;
                         }
 
-                        for(Data dato : postaElettronica) {
+                        for (Data dato : postaElettronica) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
                         }
@@ -266,13 +283,13 @@ public class ServerThreads extends Thread {
 
                         currentContent = zona;
 
-                        if(zona.isEmpty()) {
+                        if (zona.isEmpty()) {
                             out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
                             out.flush();
                             break;
                         }
 
-                        for(Data dato : zona) {
+                        for (Data dato : zona) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
                         }
@@ -282,13 +299,13 @@ public class ServerThreads extends Thread {
 
                         currentContent = feature;
 
-                        if(feature.isEmpty()) {
+                        if (feature.isEmpty()) {
                             out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
                             out.flush();
                             break;
                         }
 
-                        for(Data dato : feature) {
+                        for (Data dato : feature) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
                         }
@@ -298,13 +315,13 @@ public class ServerThreads extends Thread {
 
                         currentContent = ambiente;
 
-                        if(ambiente.isEmpty()) {
+                        if (ambiente.isEmpty()) {
                             out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
                             out.flush();
                             break;
                         }
 
-                        for(Data dato : ambiente) {
+                        for (Data dato : ambiente) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
                         }
@@ -314,13 +331,13 @@ public class ServerThreads extends Thread {
 
                         currentContent = lingua;
 
-                        if(lingua.isEmpty()) {
+                        if (lingua.isEmpty()) {
                             out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
                             out.flush();
                             break;
                         }
 
-                        for(Data dato : lingua) {
+                        for (Data dato : lingua) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
                         }
@@ -330,19 +347,20 @@ public class ServerThreads extends Thread {
 
                         currentContent = codice;
 
-                        if(codice.isEmpty()) {
+                        if (codice.isEmpty()) {
                             out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
                             out.flush();
                             break;
                         }
 
-                        for(Data dato : codice) {
+                        for (Data dato : codice) {
                             out.print(dato.toString() + "\n\r");
                             out.flush();
                         }
                         break;
                     case "GET_ROW":
-                        if((Integer.parseInt(words[1])- 1) < 1 && (Integer.parseInt(words[1])- 1) > csvr.fileContent.size()) {
+                        if ((Integer.parseInt(words[1]) - 1) < 1
+                                && (Integer.parseInt(words[1]) - 1) > csvr.fileContent.size()) {
                             out.println("Errore: il numero è fuori dai limiti! ");
                             out.flush();
                             break;
@@ -352,7 +370,8 @@ public class ServerThreads extends Thread {
                         out.flush();
                         break;
                     case "ALL":
-                        for (Data d : csvr.fileContent) out.println(d.toString());
+                        for (Data d : csvr.fileContent)
+                            out.println(d.toString());
                         out.flush();
                         break;
                     default:
