@@ -50,7 +50,7 @@ public class GUIClient extends JFrame {
             "ricerca_indirizzo", "ricerca_CAP", "ricerca_numeroTelefono",
             "ricerca_fax", "ricerca_email", "ricerca_zona", "ricerca_feature",
             "ricerca_ambiente", "ricerca_lingua", "ricerca_codice", "GET_ROW",
-            "ALL"
+            "ALL", "?"
         };
 
         JComboBox<String> ricerche = new JComboBox<>(opzioniRicerca);
@@ -110,17 +110,29 @@ public class GUIClient extends JFrame {
 
     public void sendMessages(JComboBox<String> ricerche, JTextField keywordField) {
         outputArea.setText("");
-    
+
+        String selectedCommand = (String) ricerche.getSelectedItem();
         String keyword = keywordField.getText().trim();
-        if (keyword.isEmpty() && ricerche.getSelectedItem() != "ALL") {
+
+        // Gestione del comando "?"
+        if ("?".equals(selectedCommand)) {
+            out.println("?");
+            out.flush();
+            getAnswers();
+            return;
+        }
+
+        // Controllo per i comandi che richiedono una parola chiave
+        if (keyword.isEmpty() && !"ALL".equals(selectedCommand)) {
             JOptionPane.showMessageDialog(this, "Inserisci una parola chiave.", "Attenzione", JOptionPane.WARNING_MESSAGE);
             return;
         }
-    
-        String messaggio = ricerche.getSelectedItem() + " " + keyword;
+
+        // Invio del comando con parola chiave
+        String messaggio = selectedCommand + " " + keyword;
         out.println(messaggio);
         out.flush();
-    
+
         getAnswers();
     }
 

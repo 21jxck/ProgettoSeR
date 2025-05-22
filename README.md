@@ -42,8 +42,8 @@ Parte Client:
 
 ## Note 
 - Assicurarsi che il server sia in esecuzione quando si tenta la connessione con i client.
-- Per la ricerca 'ALL' la casella di testo nella GUI deve rimanere vuota. Invece con la ricerca 'GET_ROW' si deve inserire     un numero intero.
-- Attualmente vi è un bug nella GUI: premendo solo una volta il bottone non si avvia la ricerca, bisogna premerlo più volte (questo anche con il tasto 'nuova ricerca'.
+- Per la ricerca 'ALL' la casella di testo nella GUI deve rimanere vuota. Invece con la ricerca 'GET_ROW' si deve inserire un numero intero.
+- Attualmente vi è un bug nella GUI: premendo solo una volta il bottone non si avvia la ricerca, bisogna premerlo più volte (questo anche con il tasto 'nuova ricerca').
 
 ## Autore
 Jacopo Olivo 4IB

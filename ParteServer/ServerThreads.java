@@ -91,7 +91,7 @@ public class ServerThreads extends Thread {
                         currentContent = comune;
 
                         if(comune.isEmpty()) {
-                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
+                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "! Per aiuto digita '?'");
                             out.flush();
                             break;
                         }
@@ -107,7 +107,7 @@ public class ServerThreads extends Thread {
                         currentContent = provincia;
 
                         if(provincia.isEmpty()) {
-                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
+                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "! Per aiuto digita '?'");
                             out.flush();
                             break;
                         }
@@ -123,7 +123,7 @@ public class ServerThreads extends Thread {
                         currentContent = tipologia;
 
                         if(tipologia.isEmpty()) {
-                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
+                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "! Per aiuto digita '?'");
                             out.flush();
                             break;
                         }
@@ -139,7 +139,7 @@ public class ServerThreads extends Thread {
                         currentContent = categoria;
 
                         if(categoria.isEmpty()) {
-                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
+                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "! Per aiuto digita '?'");
                             out.flush();
                             break;
                         }
@@ -155,7 +155,7 @@ public class ServerThreads extends Thread {
                         currentContent = stelle;
 
                         if(stelle.isEmpty()) {
-                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
+                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "! Per aiuto digita '?'");
                             out.flush();
                             break;
                         }
@@ -171,7 +171,7 @@ public class ServerThreads extends Thread {
                         currentContent = denominazione;
 
                         if(denominazione.isEmpty()) {
-                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
+                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "! Per aiuto digita '?'");
                             out.flush();
                             break;
                         }
@@ -187,7 +187,7 @@ public class ServerThreads extends Thread {
                         currentContent = indirizzo;
 
                         if(indirizzo.isEmpty()) {
-                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
+                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "! Per aiuto digita '?'");
                             out.flush();
                             break;
                         }
@@ -203,7 +203,7 @@ public class ServerThreads extends Thread {
                         currentContent = cap;
 
                         if(cap.isEmpty()) {
-                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
+                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "! Per aiuto digita '?'");
                             out.flush();
                             break;
                         }
@@ -219,7 +219,7 @@ public class ServerThreads extends Thread {
                         currentContent = numeroTelefono;
 
                         if(numeroTelefono.isEmpty()) {
-                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
+                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "! Per aiuto digita '?'");
                             out.flush();
                             break;
                         }
@@ -235,7 +235,7 @@ public class ServerThreads extends Thread {
                         currentContent = fax;
 
                         if(fax.isEmpty()) {
-                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
+                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "! Per aiuto digita '?'");
                             out.flush();
                             break;
                         }
@@ -251,7 +251,7 @@ public class ServerThreads extends Thread {
                         currentContent = postaElettronica;
 
                         if(postaElettronica.isEmpty()) {
-                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
+                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "! Per aiuto digita '?'");
                             out.flush();
                             break;
                         }
@@ -267,7 +267,7 @@ public class ServerThreads extends Thread {
                         currentContent = zona;
 
                         if(zona.isEmpty()) {
-                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
+                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "! Per aiuto digita '?'");
                             out.flush();
                             break;
                         }
@@ -283,7 +283,7 @@ public class ServerThreads extends Thread {
                         currentContent = feature;
 
                         if(feature.isEmpty()) {
-                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
+                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "! Per aiuto digita '?'");
                             out.flush();
                             break;
                         }
@@ -299,7 +299,7 @@ public class ServerThreads extends Thread {
                         currentContent = ambiente;
 
                         if(ambiente.isEmpty()) {
-                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
+                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "! Per aiuto digita '?'");
                             out.flush();
                             break;
                         }
@@ -315,7 +315,7 @@ public class ServerThreads extends Thread {
                         currentContent = lingua;
 
                         if(lingua.isEmpty()) {
-                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
+                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "! Per aiuto digita '?'");
                             out.flush();
                             break;
                         }
@@ -331,7 +331,7 @@ public class ServerThreads extends Thread {
                         currentContent = codice;
 
                         if(codice.isEmpty()) {
-                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "!");
+                            out.println("Errore: nessun risultato trovato per la parola " + words[1] + "! Per aiuto digita '?'");
                             out.flush();
                             break;
                         }
@@ -356,7 +356,7 @@ public class ServerThreads extends Thread {
                         out.flush();
                         break;
                     default:
-                        out.print("Errore nel comando! \n\r");
+                        out.print("Errore nel comando! Per aiuto digita '?'\n\r");
                         out.flush();
                         break;
                 }
