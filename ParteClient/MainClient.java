@@ -31,15 +31,16 @@ public class MainClient {
             Socket socket = new Socket(serverAddress, porta);
             System.out.println("Connessione al server " + socket.getInetAddress() + " sulla porta " + socket.getPort());
 
-            PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8")), true);
+            PrintWriter out = new PrintWriter(
+                    new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8")), true);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
-            
-            
+
             String command;
             while (true) {
                 String line;
                 while ((line = in.readLine()) != null) {
-                    if (line.equals("END_OF_MESSAGE")) break;
+                    if (line.equals("END_MESSAGE"))
+                        break;
                     System.out.println(line);
                 }
 

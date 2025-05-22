@@ -14,7 +14,7 @@ public class Data {
     public String postaElettronica;
     public String zona;
     public HashMap<String, Boolean> features;
-    public HashMap<String, Boolean>  ambienti;
+    public HashMap<String, Boolean> ambienti;
     public HashMap<String, Boolean> lingue;
     public String codice;
 
@@ -89,8 +89,10 @@ public class Data {
     }
 
     public Boolean contenuto(String presente) {
-        if(presente.equalsIgnoreCase("Si")) return true;
-        else return false;
+        if (presente.equalsIgnoreCase("Si"))
+            return true;
+        else
+            return false;
     }
 
     public String getComune() {
@@ -144,8 +146,8 @@ public class Data {
     public Map<String, Boolean> getFeature() {
         Map<String, Boolean> presentFeature = new HashMap<>();
 
-        for(Map.Entry<String, Boolean> feature : features.entrySet()) {
-            if(feature.getValue()) {
+        for (Map.Entry<String, Boolean> feature : features.entrySet()) {
+            if (feature.getValue()) {
                 presentFeature.put(feature.getKey(), feature.getValue());
             }
         }
@@ -156,8 +158,8 @@ public class Data {
     public Map<String, Boolean> getAmbiente() {
         Map<String, Boolean> presentAmbiente = new HashMap<>();
 
-        for(Map.Entry<String, Boolean> ambiente : ambienti.entrySet()) {
-            if(ambiente.getValue()) {
+        for (Map.Entry<String, Boolean> ambiente : ambienti.entrySet()) {
+            if (ambiente.getValue()) {
                 presentAmbiente.put(ambiente.getKey(), ambiente.getValue());
             }
         }
@@ -168,8 +170,8 @@ public class Data {
     public Map<String, Boolean> getLingua() {
         Map<String, Boolean> presentLingua = new HashMap<>();
 
-        for(Map.Entry<String, Boolean> lingua : lingue.entrySet()) {
-            if(lingua.getValue()) {
+        for (Map.Entry<String, Boolean> lingua : lingue.entrySet()) {
+            if (lingua.getValue()) {
                 presentLingua.put(lingua.getKey(), lingua.getValue());
             }
         }
@@ -186,11 +188,11 @@ public class Data {
         String s = "===============================================================\n\r";
         s += tipologia + " " + denominazione;
 
-        if(!numeroStelle.isEmpty()) {
+        if (!numeroStelle.isEmpty()) {
             s += ", Stelle: " + numeroStelle;
         }
 
-        if(!categoria.isEmpty()) {
+        if (!categoria.isEmpty()) {
             s += ", Categoria: " + categoria;
         }
 
@@ -198,13 +200,13 @@ public class Data {
                 ", Provincia: " + provincia + ", Indirizzo: " + indirizzo +
                 ", CAP: " + cap + ", Zona: " + zona + "\n\r";
 
-        if(!numTelefono.isEmpty()) {
-            s += "Numero di telefono: " + numTelefono ;
+        if (!numTelefono.isEmpty()) {
+            s += "Numero di telefono: " + numTelefono;
         }
-        if(!fax.isEmpty()) {
-            s += ", Fax: " + fax ;
+        if (!fax.isEmpty()) {
+            s += ", Fax: " + fax;
         }
-        if(!postaElettronica.isEmpty()) {
+        if (!postaElettronica.isEmpty()) {
             s += ", Posta elettronica: " + postaElettronica;
         }
         s += "\n\rFeatures: ";
@@ -233,18 +235,19 @@ public class Data {
             }
         }
 
-        if(featuresPresenti.isEmpty()) {
+        if (featuresPresenti.isEmpty()) {
             featuresPresenti = "nessuna.";
         }
 
-        if(ambientiPresenti.isEmpty()) {
+        if (ambientiPresenti.isEmpty()) {
             ambientiPresenti = "niente.";
         }
 
-        if(linguePresenti.isEmpty()) {
+        if (linguePresenti.isEmpty()) {
             linguePresenti = "nessuna.";
         }
-        s += featuresPresenti + "\n\rAmbiente circostante: " + ambientiPresenti + "\n\rLingue straniere parlate: " + linguePresenti + "\n\r";
+        s += featuresPresenti + "\n\rAmbiente circostante: " + ambientiPresenti + "\n\rLingue straniere parlate: "
+                + linguePresenti + "\n\r";
 
         return s + "===============================================================\n\r";
     }

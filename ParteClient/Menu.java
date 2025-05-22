@@ -61,16 +61,15 @@ public class Menu extends JFrame {
         JTextField nPorta = new JTextField();
 
         Object[] message = {
-            "Indirizzo IP del server (default: 127.0.0.1):", indirizzo,
-            "Numero di porta (default: 1050):", nPorta
+                "Indirizzo IP del server (default: 127.0.0.1):", indirizzo,
+                "Numero di porta (default: 1050):", nPorta
         };
 
         int option = JOptionPane.showConfirmDialog(
-            this,
-            message,
-            "Connessione al Server",
-            JOptionPane.PLAIN_MESSAGE
-        );
+                this,
+                message,
+                "Connessione al Server",
+                JOptionPane.PLAIN_MESSAGE);
 
         String ip = "127.0.0.1";
         int port = 1050;
@@ -86,7 +85,8 @@ public class Menu extends JFrame {
                         throw new NumberFormatException("Porta fuori intervallo (1-65535)");
                     }
                 } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(this, "Numero di porta non valido!", "Errore", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Numero di porta non valido!", "Errore",
+                            JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             }
@@ -98,7 +98,8 @@ public class Menu extends JFrame {
     public void connessioneServer(String ip, int port) {
         try {
             Socket socket = new Socket(ip, port);
-            PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8")), true);
+            PrintWriter out = new PrintWriter(
+                    new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8")), true);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
 
             out.println("Connessione avvenuta con successo!");
@@ -112,7 +113,8 @@ public class Menu extends JFrame {
                 guiClient.setVisible(true);
             });
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Errore durante la connessione al server: " + e.getMessage(), "Errore", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Errore durante la connessione al server: " + e.getMessage(), "Errore",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
