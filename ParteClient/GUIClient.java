@@ -114,7 +114,6 @@ public class GUIClient extends JFrame {
         String selectedCommand = (String) ricerche.getSelectedItem();
         String keyword = keywordField.getText().trim();
 
-        // Gestione del comando "?"
         if ("?".equals(selectedCommand)) {
             out.println("?");
             out.flush();
@@ -122,13 +121,11 @@ public class GUIClient extends JFrame {
             return;
         }
 
-        // Controllo per i comandi che richiedono una parola chiave
         if (keyword.isEmpty() && !"ALL".equals(selectedCommand)) {
             JOptionPane.showMessageDialog(this, "Inserisci una parola chiave.", "Attenzione", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-        // Invio del comando con parola chiave
         String messaggio = selectedCommand + " " + keyword;
         out.println(messaggio);
         out.flush();
